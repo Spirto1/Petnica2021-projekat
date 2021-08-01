@@ -97,9 +97,11 @@ class boardClass(object):
     def isWinner(self):
         return self.selectableSpots == 0
 
-
+numWin = 0
+numLoss = 0
 #play game
 def playGame():
+    global numWin, numLoss
     boardSize = int(input("Choose the Width of the board: "))
     numMines = int(input("Choose the number of mines: "))
     gameOver = False
@@ -119,9 +121,17 @@ def playGame():
     print(Board)
     if winner:
         print("Congratulations, You Win!")
-        playGame()
+        numWin += 1
+        endGame(numWin, numLoss)
     else:
         print("You hit a mine, Game Over!")
+        numLoss += 1
+        endGame(numWin, numLoss)
+        
+def endGame(numWin, numLoss):
+        print("Wins: " + str(numWin))
+        print("Losses: " + str(numLoss))
+        print("Total: " + str(numWin + numLoss))
         playGame()
-
+        
 playGame()
