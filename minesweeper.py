@@ -119,7 +119,9 @@ def playGame():
     print(Board)
     if winner:
         print("Congratulations, You Win!")
+        playGame()
     else:
         print("You hit a mine, Game Over!")
+        playGame()
 
 playGame()
