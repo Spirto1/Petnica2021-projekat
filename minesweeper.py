@@ -101,10 +101,10 @@ numWin = 0
 numLoss = 0
 numPlay = 0
 #play game
-def playGame():
+def playGame(boardSize, numMines):
     global numWin, numLoss
-    boardSize = int(input("Choose the Width of the board: "))
-    numMines = int(input("Choose the number of mines: "))
+    #boardSize = int(input("Choose the Width of the board: "))
+    #numMines = int(input("Choose the number of mines: "))
     gameOver = False
     winner = False
     Board = boardClass(boardSize, numMines)
