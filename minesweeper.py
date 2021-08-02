@@ -99,6 +99,7 @@ class boardClass(object):
 
 numWin = 0
 numLoss = 0
+numPlay = 0
 #play game
 def playGame():
     global numWin, numLoss
@@ -108,10 +109,9 @@ def playGame():
     winner = False
     Board = boardClass(boardSize, numMines)
     while not gameOver:
-        print(Board)
-        print("Make your move:")
-        x = int(input("x: "))
-        y = int(input("y: "))
+        #print(Board)
+        x = int(input("X: "))
+        y = int(input("Y: "))
         Board.makeMove(x, y)
         gameOver = Board.hitMine(x, y)
         if Board.isWinner() and gameOver == False:
@@ -129,9 +129,15 @@ def playGame():
         endGame(numWin, numLoss)
         
 def endGame(numWin, numLoss):
-        print("Wins: " + str(numWin))
-        print("Losses: " + str(numLoss))
-        print("Total: " + str(numWin + numLoss))
+    global numPlay
+    f = open("result.txt", "w")
+    f.write("\nWins: " + str(numWin))
+    f.write("\nLosses: " + str(numLoss))
+    f.write("\nTotal: " + str(numWin + numLoss))
+    f.close()
+    if numPlay != 10:
         playGame()
-        
+        numPlay += 1
+
+       
 playGame()
