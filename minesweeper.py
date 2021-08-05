@@ -33,8 +33,8 @@ class boardClass(object):
                 i += 1
             else:
                 i -= 1
-    def pullBoard(self):
-        print(self.board)
+    def getBoard(self):
+        return self.board
     def __str__(self):
         returnString = " "
         divider = "\n---"
@@ -99,4 +99,7 @@ class boardClass(object):
         return self.selectableSpots == 0
 
 brd = boardClass(9,10)
-brd.pullBoard()
+b = brd.getBoard()
+for i in range(9):
+    for j in range(9):
+        print(b[i][j].value)

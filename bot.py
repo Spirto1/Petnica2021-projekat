@@ -19,10 +19,17 @@ def playGame(boardSize, numMines):
     gameOver = False
     winner = False
     Board = ms.boardClass(boardSize, numMines)
+    x = 0
+    y = 0
+    Board.makeMove(x, y)
+    for i in range(boardSize +1):
+        x += 1
+        for j in range(boardSize +1):
+            y +=1
+    
     while not gameOver:
         #print(Board)
-        x = int(input("X: "))
-        y = int(input("Y: "))
+        
         Board.makeMove(x, y)
         gameOver = Board.hitMine(x, y)
         if Board.isWinner() and gameOver == False:
@@ -50,6 +57,6 @@ def endGame(numWin, numLoss):
         playGame()
         numPlay += 1
 
-       
+        
 playGame()
 initBot()   
